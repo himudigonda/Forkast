@@ -1,0 +1,6 @@
+# Backend dependencies
+fastapi
+uvicorn
+httpx
+pydantic
+ollama
