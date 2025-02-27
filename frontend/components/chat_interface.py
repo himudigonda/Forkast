@@ -19,10 +19,17 @@ def chat_with_product(product_data, backend_url):
             return
         
         with st.spinner("Thinking..."):
-            response = requests.post(f"{backend_url}/chat", json={
+            payload = {
                 "user_query": user_query,
-                "barcode": product_data["barcode"]
-            })
+                "barcode": product_data["barcode"],
+                "user_id": None  # Optional user profile feature
+            }
+
+            response = requests.post(f"{backend_url}/chat", json=payload)
+            
+            if response.status_code != 200:
+                st.error(f"❌ Chat failed! Error {response.status_code}: {response.text}")
+                return
 
             ai_response = response.json().get("response", "❌ No response from AI.")
 

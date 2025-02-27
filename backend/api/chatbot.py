@@ -18,7 +18,7 @@ def chat_with_product(user_query, product_data, user_profile):
     {product_summary}
     User has dietary preferences: {json.dumps(user_profile)}.
     User question: "{user_query}"
-    Respond as if you are the product, in an engaging and informative way.
+    Respond as if you are the product, be short and to the point in your answers.
     """
 
     result = subprocess.run(["ollama", "run", OLLAMA_MODEL, prompt], capture_output=True, text=True)
